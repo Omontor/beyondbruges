@@ -44,20 +44,8 @@
                         </a>
                     </li>
                 @endcan
-                @can('landmark_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.landmarks.index") }}" class="nav-link {{ request()->is("admin/landmarks") || request()->is("admin/landmarks/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-map-pin">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.landmark.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
                 @can('navigation_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/locations*") ? "menu-open" : "" }} {{ request()->is("admin/itineraries*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/landmarks*") ? "menu-open" : "" }} {{ request()->is("admin/itineraries*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-globe">
 
@@ -68,14 +56,14 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('location_access')
+                            @can('landmark_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.locations.index") }}" class="nav-link {{ request()->is("admin/locations") || request()->is("admin/locations/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-map-marked-alt">
+                                    <a href="{{ route("admin.landmarks.index") }}" class="nav-link {{ request()->is("admin/landmarks") || request()->is("admin/landmarks/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-map-pin">
 
                                         </i>
                                         <p>
-                                            {{ trans('cruds.location.title') }}
+                                            {{ trans('cruds.landmark.title') }}
                                         </p>
                                     </a>
                                 </li>

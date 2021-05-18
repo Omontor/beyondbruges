@@ -28,10 +28,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('blogs/media', 'BlogApiController@storeMedia')->name('blogs.storeMedia');
     Route::apiResource('blogs', 'BlogApiController');
 
-    // Location
-    Route::post('locations/media', 'LocationApiController@storeMedia')->name('locations.storeMedia');
-    Route::apiResource('locations', 'LocationApiController');
-
     // Itinerary
     Route::apiResource('itineraries', 'ItineraryApiController');
 

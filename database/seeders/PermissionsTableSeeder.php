@@ -176,122 +176,102 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 42,
-                'title' => 'location_create',
-            ],
-            [
-                'id'    => 43,
-                'title' => 'location_edit',
-            ],
-            [
-                'id'    => 44,
-                'title' => 'location_show',
-            ],
-            [
-                'id'    => 45,
-                'title' => 'location_delete',
-            ],
-            [
-                'id'    => 46,
-                'title' => 'location_access',
-            ],
-            [
-                'id'    => 47,
                 'title' => 'navigation_access',
             ],
             [
-                'id'    => 48,
+                'id'    => 43,
                 'title' => 'itinerary_create',
             ],
             [
-                'id'    => 49,
+                'id'    => 44,
                 'title' => 'itinerary_edit',
             ],
             [
-                'id'    => 50,
+                'id'    => 45,
                 'title' => 'itinerary_show',
             ],
             [
-                'id'    => 51,
+                'id'    => 46,
                 'title' => 'itinerary_delete',
             ],
             [
-                'id'    => 52,
+                'id'    => 47,
                 'title' => 'itinerary_access',
             ],
             [
-                'id'    => 53,
+                'id'    => 48,
                 'title' => 'prize_create',
             ],
             [
-                'id'    => 54,
+                'id'    => 49,
                 'title' => 'prize_edit',
             ],
             [
-                'id'    => 55,
+                'id'    => 50,
                 'title' => 'prize_show',
             ],
             [
-                'id'    => 56,
+                'id'    => 51,
                 'title' => 'prize_delete',
             ],
             [
-                'id'    => 57,
+                'id'    => 52,
                 'title' => 'prize_access',
             ],
             [
-                'id'    => 58,
+                'id'    => 53,
                 'title' => 'asset_management_access',
             ],
             [
-                'id'    => 59,
+                'id'    => 54,
                 'title' => 'redeem_create',
             ],
             [
-                'id'    => 60,
+                'id'    => 55,
                 'title' => 'redeem_edit',
             ],
             [
-                'id'    => 61,
+                'id'    => 56,
                 'title' => 'redeem_show',
             ],
             [
-                'id'    => 62,
+                'id'    => 57,
                 'title' => 'redeem_delete',
             ],
             [
-                'id'    => 63,
+                'id'    => 58,
                 'title' => 'redeem_access',
             ],
             [
-                'id'    => 64,
+                'id'    => 59,
                 'title' => 'audit_log_show',
             ],
             [
-                'id'    => 65,
+                'id'    => 60,
                 'title' => 'audit_log_access',
             ],
             [
-                'id'    => 66,
+                'id'    => 61,
                 'title' => 'notification_create',
             ],
             [
-                'id'    => 67,
+                'id'    => 62,
                 'title' => 'notification_edit',
             ],
             [
-                'id'    => 68,
+                'id'    => 63,
                 'title' => 'notification_show',
             ],
             [
-                'id'    => 69,
+                'id'    => 64,
                 'title' => 'notification_delete',
             ],
             [
-                'id'    => 70,
+                'id'    => 65,
                 'title' => 'notification_access',
             ],
             [
-                'id'    => 71,
+                'id'    => 66,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -17,13 +17,13 @@ class ItineraryApiController extends Controller
     {
         abort_if(Gate::denies('itinerary_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ItineraryResource(Itinerary::with(['locations'])->get());
+        return new ItineraryResource(Itinerary::with(['landmarks'])->get());
     }
 
     public function store(StoreItineraryRequest $request)
     {
         $itinerary = Itinerary::create($request->all());
-        $itinerary->locations()->sync($request->input('locations', []));
+        $itinerary->landmarks()->sync($request->input('landmarks', []));
 
         return (new ItineraryResource($itinerary))
             ->response()
@@ -34,13 +34,13 @@ class ItineraryApiController extends Controller
     {
         abort_if(Gate::denies('itinerary_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ItineraryResource($itinerary->load(['locations']));
+        return new ItineraryResource($itinerary->load(['landmarks']));
     }
 
     public function update(UpdateItineraryRequest $request, Itinerary $itinerary)
     {
         $itinerary->update($request->all());
-        $itinerary->locations()->sync($request->input('locations', []));
+        $itinerary->landmarks()->sync($request->input('landmarks', []));
 
         return (new ItineraryResource($itinerary))
             ->response()

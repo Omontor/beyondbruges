@@ -51,12 +51,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('blogs/ckmedia', 'BlogController@storeCKEditorImages')->name('blogs.storeCKEditorImages');
     Route::resource('blogs', 'BlogController');
 
-    // Location
-    Route::delete('locations/destroy', 'LocationController@massDestroy')->name('locations.massDestroy');
-    Route::post('locations/media', 'LocationController@storeMedia')->name('locations.storeMedia');
-    Route::post('locations/ckmedia', 'LocationController@storeCKEditorImages')->name('locations.storeCKEditorImages');
-    Route::resource('locations', 'LocationController');
-
     // Itinerary
     Route::delete('itineraries/destroy', 'ItineraryController@massDestroy')->name('itineraries.massDestroy');
     Route::resource('itineraries', 'ItineraryController');

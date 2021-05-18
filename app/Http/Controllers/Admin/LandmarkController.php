@@ -80,6 +80,8 @@ class LandmarkController extends Controller
     {
         abort_if(Gate::denies('landmark_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $landmark->load('landmarkItineraries');
+
         return view('admin.landmarks.show', compact('landmark'));
     }
 

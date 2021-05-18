@@ -102,6 +102,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#landmark_itineraries" role="tab" data-toggle="tab">
+                {{ trans('cruds.itinerary.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="landmark_itineraries">
+            @includeIf('admin.landmarks.relationships.landmarkItineraries', ['itineraries' => $landmark->landmarkItineraries])
+        </div>
+    </div>
+</div>
 
 @endsection

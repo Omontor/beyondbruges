@@ -21,10 +21,10 @@ class StoreItineraryRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'locations.*' => [
+            'landmarks.*' => [
                 'integer',
             ],
-            'locations' => [
+            'landmarks' => [
                 'array',
             ],
         ];

@@ -29,7 +29,7 @@
                             {{ trans('cruds.itinerary.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.itinerary.fields.location') }}
+                            {{ trans('cruds.itinerary.fields.landmark') }}
                         </th>
                         <th>
                             &nbsp;
@@ -47,7 +47,7 @@
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach($locations as $key => $item)
+                                @foreach($landmarks as $key => $item)
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
@@ -69,7 +69,7 @@
                                 {{ $itinerary->name ?? '' }}
                             </td>
                             <td>
-                                @foreach($itinerary->locations as $key => $item)
+                                @foreach($itinerary->landmarks as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>

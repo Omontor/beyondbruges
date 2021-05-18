@@ -7,7 +7,7 @@ use App\Http\Requests\MassDestroyItineraryRequest;
 use App\Http\Requests\StoreItineraryRequest;
 use App\Http\Requests\UpdateItineraryRequest;
 use App\Models\Itinerary;
-use App\Models\Location;
+use App\Models\Landmark;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,26 +18,26 @@ class ItineraryController extends Controller
     {
         abort_if(Gate::denies('itinerary_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $itineraries = Itinerary::with(['locations'])->get();
+        $itineraries = Itinerary::with(['landmarks'])->get();
 
-        $locations = Location::get();
+        $landmarks = Landmark::get();
 
-        return view('admin.itineraries.index', compact('itineraries', 'locations'));
+        return view('admin.itineraries.index', compact('itineraries', 'landmarks'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('itinerary_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::all()->pluck('name', 'id');
+        $landmarks = Landmark::all()->pluck('name', 'id');
 
-        return view('admin.itineraries.create', compact('locations'));
+        return view('admin.itineraries.create', compact('landmarks'));
     }
 
     public function store(StoreItineraryRequest $request)
     {
         $itinerary = Itinerary::create($request->all());
-        $itinerary->locations()->sync($request->input('locations', []));
+        $itinerary->landmarks()->sync($request->input('landmarks', []));
 
         return redirect()->route('admin.itineraries.index');
     }
@@ -46,17 +46,17 @@ class ItineraryController extends Controller
     {
         abort_if(Gate::denies('itinerary_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $locations = Location::all()->pluck('name', 'id');
+        $landmarks = Landmark::all()->pluck('name', 'id');
 
-        $itinerary->load('locations');
+        $itinerary->load('landmarks');
 
-        return view('admin.itineraries.edit', compact('locations', 'itinerary'));
+        return view('admin.itineraries.edit', compact('landmarks', 'itinerary'));
     }
 
     public function update(UpdateItineraryRequest $request, Itinerary $itinerary)
     {
         $itinerary->update($request->all());
-        $itinerary->locations()->sync($request->input('locations', []));
+        $itinerary->landmarks()->sync($request->input('landmarks', []));
 
         return redirect()->route('admin.itineraries.index');
     }
@@ -65,7 +65,7 @@ class ItineraryController extends Controller
     {
         abort_if(Gate::denies('itinerary_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $itinerary->load('locations');
+        $itinerary->load('landmarks');
 
         return view('admin.itineraries.show', compact('itinerary'));
     }

@@ -18,20 +18,20 @@
                 <span class="help-block">{{ trans('cruds.itinerary.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="locations">{{ trans('cruds.itinerary.fields.location') }}</label>
+                <label for="landmarks">{{ trans('cruds.itinerary.fields.landmark') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('locations') ? 'is-invalid' : '' }}" name="locations[]" id="locations" multiple>
-                    @foreach($locations as $id => $location)
-                        <option value="{{ $id }}" {{ in_array($id, old('locations', [])) ? 'selected' : '' }}>{{ $location }}</option>
+                <select class="form-control select2 {{ $errors->has('landmarks') ? 'is-invalid' : '' }}" name="landmarks[]" id="landmarks" multiple>
+                    @foreach($landmarks as $id => $landmark)
+                        <option value="{{ $id }}" {{ in_array($id, old('landmarks', [])) ? 'selected' : '' }}>{{ $landmark }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('locations'))
-                    <span class="text-danger">{{ $errors->first('locations') }}</span>
+                @if($errors->has('landmarks'))
+                    <span class="text-danger">{{ $errors->first('landmarks') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.itinerary.fields.location_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.itinerary.fields.landmark_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

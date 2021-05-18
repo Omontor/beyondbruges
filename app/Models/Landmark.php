@@ -49,6 +49,11 @@ class Landmark extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function landmarkItineraries()
+    {
+        return $this->belongsToMany(Itinerary::class);
+    }
+
     public function getGalleryAttribute()
     {
         $files = $this->getMedia('gallery');

@@ -29,9 +29,9 @@ class Itinerary extends Model
         'deleted_at',
     ];
 
-    public function locations()
+    public function landmarks()
     {
-        return $this->belongsToMany(Location::class);
+        return $this->belongsToMany(Landmark::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

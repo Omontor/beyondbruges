@@ -33,11 +33,11 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.itinerary.fields.location') }}
+                            {{ trans('cruds.itinerary.fields.landmark') }}
                         </th>
                         <td>
-                            @foreach($itinerary->locations as $key => $location)
-                                <span class="label label-info">{{ $location->name }}</span>
+                            @foreach($itinerary->landmarks as $key => $landmark)
+                                <span class="label label-info">{{ $landmark->name }}</span>
                             @endforeach
                         </td>
                     </tr>
