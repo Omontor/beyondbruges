@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 class PassportAuthController extends Controller
 {
     /**
@@ -59,14 +61,17 @@ class PassportAuthController extends Controller
         if($validation->fails()){
             return response()->json($validation->errors(), 400); //Unprocessable Data
         }
-        $sector = Sector::find($request->sector);
         $user = User::create([
             'name' => $request->name,
-            'completeName' => $request->completeName,
             'email' => $request->email,
-            'sector_id' => $sector->id,
             'password' => Hash::make($request->password)
         ]);
+
+        QrCode::generate('http://peanutagency.synology.me:5018/admin/qr-codes/create/'.$user->id, storage_path('app/public/qrcodes/'.$user->id.'.svg'));
+        QrCode::format('svg');
+        QrCode::size(512);
+
+
 
         return response()->json($user);
     }  

@@ -41,6 +41,7 @@ class QrCodeController extends Controller
 
     public function store(StoreQrCodeRequest $request)
     {
+
         $qrCode = QrCode::create($request->all());
 
         return redirect()->route('admin.qr-codes.index');
@@ -89,5 +90,12 @@ class QrCodeController extends Controller
         QrCode::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function newtransaction ($userid){
+
+        $user = User::findOrFail($userid);
+        return view('admin.qrCodes.transaction', compact('user'));
+
     }
 }

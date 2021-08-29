@@ -45,6 +45,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('qr-codes/destroy', 'QrCodeController@massDestroy')->name('qr-codes.massDestroy');
     Route::resource('qr-codes', 'QrCodeController');
 
+    Route::get('qr-codes/create/{id}', 'QrCodeController@newtransaction')->name('qr-codes.newtransaction');
+
     // Blog
     Route::delete('blogs/destroy', 'BlogController@massDestroy')->name('blogs.massDestroy');
     Route::post('blogs/media', 'BlogController@storeMedia')->name('blogs.storeMedia');

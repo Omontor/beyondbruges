@@ -1,7 +1,7 @@
 <?php
 
 
-Route::post('register', [\App\Http\Controllers\PassportAuthController::class, 'register']);
+Route::post('register', [\App\Http\Controllers\PassportAuthController::class, 'store']);
 Route::post('login', [\App\Http\Controllers\PassportAuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
