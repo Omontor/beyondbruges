@@ -21,7 +21,14 @@ class PartnerApiController extends Controller
         abort_if(Gate::denies('partner_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new PartnerResource(Partner::with(['owner'])->get());
+    }        
+
+    public function list()
+    {
+
+        return new PartnerResource(Partner::with(['owner'])->get());
     }
+
 
     public function store(StorePartnerRequest $request)
     {
