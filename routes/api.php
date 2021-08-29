@@ -1,5 +1,13 @@
 <?php
 
+
+Route::post('register', [\App\Http\Controllers\PassportAuthController::class, 'register']);
+Route::post('login', [\App\Http\Controllers\PassportAuthController::class, 'login']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::resource('posts', PostController::class);
+});
+
 Route::get('partners', 'Api\V1\Admin\PartnerApiController@list');
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
