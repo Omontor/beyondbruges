@@ -32,7 +32,7 @@
                             {{ trans('cruds.user.fields.email') }}
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.email_verified_at') }}
+                           Total Bryghia
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.roles') }}
@@ -84,7 +84,7 @@
                                 {{ $user->email ?? '' }}
                             </td>
                             <td>
-                                {{ $user->email_verified_at ?? '' }}
+                                {{ $user->bryghia }}
                             </td>
                             <td>
                                 @foreach($user->roles as $key => $item)

@@ -43,9 +43,20 @@ class QrCodeController extends Controller
     {
 
         $qrCode = QrCode::create($request->all());
+        //Add Bryghia to user's chest
+        $user = User::find($request->user_id);
+        $user->bryghia += $request->issued_bryghia;
+        $user->update();
+        //Let them know
+
+        //email
+
+        //push notification
 
         return redirect()->route('admin.qr-codes.index');
     }
+
+    
 
     public function edit(QrCode $qrCode)
     {
