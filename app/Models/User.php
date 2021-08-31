@@ -22,7 +22,6 @@ class User extends Authenticatable
     use Notifiable;
     use Auditable;
     use HasFactory;
-    use HasApiTokens;
 
     public $table = 'users';
 

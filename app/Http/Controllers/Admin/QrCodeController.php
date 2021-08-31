@@ -12,6 +12,7 @@ use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use OneSignal;
 
 class QrCodeController extends Controller
 {
@@ -46,17 +47,27 @@ class QrCodeController extends Controller
         //Add Bryghia to user's chest
         $user = User::find($request->user_id);
         $user->bryghia += $request->issued_bryghia;
-        $user->update();
+       
         //Let them know
 
         //email
 
         //push notification
+    $partner = Partner::find($request->partner_id);
 
+    OneSignal::sendNotificationToUser(
+        "Congratulations! Your purchase in ".$partner->name." has awarded you ".$request->issued_bryghia." bryghia",
+        $user->udid,
+        $data = null,
+        $buttons = null,
+        $schedule = null
+    );
+
+        $user->update();
         return redirect()->route('admin.qr-codes.index');
     }
 
-    
+
 
     public function edit(QrCode $qrCode)
     {
