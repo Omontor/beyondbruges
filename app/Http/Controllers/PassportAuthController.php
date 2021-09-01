@@ -6,6 +6,7 @@ use App\Models\User;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 class PassportAuthController extends Controller
 {
     /**
@@ -67,12 +68,37 @@ class PassportAuthController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        QrCode::generate('http://peanutagency.synology.me:5018/admin/qr-codes/create/'.$user->id, storage_path('app/public/qrcodes/'.$user->id.'.svg'));
+        QrCode::generate(env('APP_URL').'/admin/qr-codes/create/'.$user->id, storage_path('app/public/qrcodes/'.$user->id.'.svg'));
         QrCode::format('svg');
         QrCode::size(512);
 
 
+        // email data
+        $email_data = array(
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => $request->password,
+            'id' => $user->id,
+        );
 
+        // send email with the template
+        Mail::send('emails.welcome', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'])
+                ->subject('Welcome to Beyond Bruges')
+                ->from('noreply@beyondbruges.be', 'Beyond Bruges App');
+        });
         return response()->json($user);
     }  
+
+        public function udid(Request $request)
+    {
+        $user = User::find($request->id);
+
+        if ($request->udid){
+            $user->udid = $request->udid;
+        }
+        $user->save();
+        return $user;
+    }
+
 }

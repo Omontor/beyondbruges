@@ -1,8 +1,17 @@
 <?php
 
+use Illuminate\Http\Request;
 
 Route::post('register', [\App\Http\Controllers\PassportAuthController::class, 'store']);
 Route::post('login', [\App\Http\Controllers\PassportAuthController::class, 'login']);
+
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+Route::post('udid', [\App\Http\Controllers\PassportAuthController::class, 'udid']);
 
 Route::middleware('auth:api')->group(function () {
     Route::resource('posts', PostController::class);
