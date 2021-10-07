@@ -71,4 +71,12 @@ class LandmarkApiController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+      public function list()
+    {
+
+         $landmarks = Landmark::all();
+        return response()->json(['data' => $landmarks], 200);
+    }
+
 }

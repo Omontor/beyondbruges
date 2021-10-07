@@ -49,6 +49,11 @@ class User extends Authenticatable
         'deleted_at',
     ];
 
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class, 'user_id', 'id');
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('id', 1)->exists();

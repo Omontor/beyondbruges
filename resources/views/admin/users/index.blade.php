@@ -36,6 +36,10 @@
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.roles') }}
+                        </th>                        
+
+                        <th>
+                            Purchased?
                         </th>
                         <th>
                             &nbsp;
@@ -64,6 +68,7 @@
                                 @endforeach
                             </select>
                         </td>
+                       <td></td>
                         <td>
                         </td>
                     </tr>
@@ -90,6 +95,13 @@
                                 @foreach($user->roles as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
+                            </td>
+                            <td>
+                                @if($user->purchased == 1)
+                                <i style="color: green;" class="fas fa-check"></i>
+                                @else
+                                <i style="color: red;" class="fas fa-times"></i>
+                                @endif
                             </td>
                             <td>
                                 @can('user_show')

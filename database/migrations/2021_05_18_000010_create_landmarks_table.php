@@ -14,6 +14,7 @@ class CreateLandmarksTable extends Migration
             $table->string('address')->nullable();
             $table->string('lat');
             $table->string('lng');
+            $table->string('url')->nullable();
             $table->longText('description_a')->nullable();
             $table->longText('description_b')->nullable();
             $table->longText('description_c')->nullable();

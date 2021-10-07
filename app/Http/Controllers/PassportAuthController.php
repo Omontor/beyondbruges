@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Purchase;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use OneSignal;
 class PassportAuthController extends Controller
 {
     /**
@@ -27,7 +29,8 @@ class PassportAuthController extends Controller
         ]);
        
         $token = $user->createToken('LaravelAuthApp')->accessToken;
- 
+
+
         return response()->json(['token' => $token], 200);
     }
  
@@ -62,6 +65,7 @@ class PassportAuthController extends Controller
         if($validation->fails()){
             return response()->json($validation->errors(), 400); //Unprocessable Data
         }
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -99,6 +103,19 @@ class PassportAuthController extends Controller
         }
         $user->save();
         return $user;
+    }
+
+    public function makepurchase(Request $request){
+
+        $user = User::find($request->id);
+        $user->purchased = 1;
+        $user->save();
+        $purchase = new Purchase;
+        $purchase->user_id = $user->id;
+        $purchase->platform = $request->platform;
+        $purchase->save();
+        return $user;
+
     }
 
 }

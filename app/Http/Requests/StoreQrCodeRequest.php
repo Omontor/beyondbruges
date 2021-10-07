@@ -19,13 +19,11 @@ class StoreQrCodeRequest extends FormRequest
         return [
             'transaction_total' => [
                 'required',
-                'integer',
                 'min:-2147483648',
                 'max:2147483647',
             ],
             'issued_bryghia' => [
                 'required',
-                'integer',
                 'min:-2147483648',
                 'max:2147483647',
             ],

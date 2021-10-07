@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label class="required" for="transaction_total">{{ trans('cruds.qrCode.fields.transaction_total') }} in Euro</label>
-                <input class="form-control {{ $errors->has('transaction_total') ? 'is-invalid' : '' }}" type="number" name="transaction_total" id="transaction_total" value="{{ old('transaction_total', '') }}" step="1" required onchange="myFunction(this.value)">
+                <input class="form-control {{ $errors->has('transaction_total') ? 'is-invalid' : '' }}" type="float" name="transaction_total" id="transaction_total" value="{{ old('transaction_total', '') }}" step="1" required onchange="myFunction(this.value)">
                 @if($errors->has('transaction_total'))
                     <span class="text-danger">{{ $errors->first('transaction_total') }}</span>
                 @endif
