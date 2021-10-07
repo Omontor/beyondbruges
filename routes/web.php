@@ -74,6 +74,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('notifications/destroy', 'NotificationController@massDestroy')->name('notifications.massDestroy');
     Route::resource('notifications', 'NotificationController');
 
+    // Coupon Redeem
+    Route::delete('coupon-redeems/destroy', 'CouponRedeemController@massDestroy')->name('coupon-redeems.massDestroy');
+    Route::resource('coupon-redeems', 'CouponRedeemController');
+
+
     Route::get('system-calendar', 'SystemCalendarController@index')->name('systemCalendar');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');
     Route::get('messenger/create', 'MessengerController@createTopic')->name('messenger.createTopic');

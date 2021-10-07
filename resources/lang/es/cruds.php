@@ -2,8 +2,8 @@
 
 return [
     'userManagement' => [
-        'title'          => 'Ajustes',
-        'title_singular' => 'Ajustes',
+        'title'          => 'Gestión de usuarios',
+        'title_singular' => 'Gestión de usuarios',
     ],
     'permission' => [
         'title'          => 'Permisos',
@@ -151,6 +151,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'type'               => 'Type',
+            'type_helper'        => ' ',
         ],
     ],
     'qrCode' => [
@@ -307,6 +309,28 @@ return [
             'title_helper'      => ' ',
             'content'           => 'Content',
             'content_helper'    => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
+    'couponManagement' => [
+        'title'          => 'Coupon Management',
+        'title_singular' => 'Coupon Management',
+    ],
+    'couponRedeem' => [
+        'title'          => 'Coupon Redeem',
+        'title_singular' => 'Coupon Redeem',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'user'              => 'User',
+            'user_helper'       => ' ',
+            'coupon'            => 'Coupon',
+            'coupon_helper'     => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated at',

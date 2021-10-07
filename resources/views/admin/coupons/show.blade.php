@@ -55,6 +55,14 @@
                             {{ $coupon->partner->name ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.coupon.fields.type') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Coupon::TYPE_SELECT[$coupon->type] ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

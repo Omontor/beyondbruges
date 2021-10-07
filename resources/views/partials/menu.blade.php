@@ -83,6 +83,45 @@
                         </ul>
                     </li>
                 @endcan
+                @can('coupon_management_access')
+                    <li class="nav-item has-treeview {{ request()->is("admin/coupons*") ? "menu-open" : "" }} {{ request()->is("admin/coupon-redeems*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle" href="#">
+                            <i class="fa-fw nav-icon fas fa-check-double">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.couponManagement.title') }}
+                                <i class="right fa fa-fw fa-angle-left nav-icon"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('coupon_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.coupons.index") }}" class="nav-link {{ request()->is("admin/coupons") || request()->is("admin/coupons/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-ticket-alt">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.coupon.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('coupon_redeem_access')
+                                <li class="nav-item">
+                                    <a href="{{ route("admin.coupon-redeems.index") }}" class="nav-link {{ request()->is("admin/coupon-redeems") || request()->is("admin/coupon-redeems/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-hand-holding-usd">
+
+                                        </i>
+                                        <p>
+                                            {{ trans('cruds.couponRedeem.title') }}
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
                 @can('partner_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.partners.index") }}" class="nav-link {{ request()->is("admin/partners") || request()->is("admin/partners/*") ? "active" : "" }}">
@@ -91,18 +130,6 @@
                             </i>
                             <p>
                                 {{ trans('cruds.partner.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-                @can('coupon_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.coupons.index") }}" class="nav-link {{ request()->is("admin/coupons") || request()->is("admin/coupons/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-ticket-alt">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.coupon.title') }}
                             </p>
                         </a>
                     </li>

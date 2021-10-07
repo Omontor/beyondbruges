@@ -29,7 +29,7 @@ class CouponController extends Controller
     {
         abort_if(Gate::denies('coupon_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $partners = Partner::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $partners = Partner::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.coupons.create', compact('partners'));
     }
@@ -45,7 +45,7 @@ class CouponController extends Controller
     {
         abort_if(Gate::denies('coupon_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $partners = Partner::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $partners = Partner::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $coupon->load('partner');
 

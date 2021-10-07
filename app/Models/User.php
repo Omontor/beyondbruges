@@ -69,6 +69,11 @@ class User extends Authenticatable
         return $this->hasMany(QrCode::class, 'user_id', 'id');
     }
 
+    public function coupons()
+    {
+        return $this->hasMany(CouponRedeem::class, 'user_id', 'id');
+    }
+
     public function userRedeems()
     {
         return $this->hasMany(Redeem::class, 'user_id', 'id');

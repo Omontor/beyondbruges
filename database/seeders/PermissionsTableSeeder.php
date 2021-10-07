@@ -272,6 +272,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 66,
+                'title' => 'coupon_management_access',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'coupon_redeem_create',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'coupon_redeem_edit',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'coupon_redeem_show',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'coupon_redeem_delete',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'coupon_redeem_access',
+            ],
+            [
+                'id'    => 72,
                 'title' => 'profile_password_edit',
             ],
         ];

@@ -37,6 +37,9 @@
                                 {{ trans('cruds.coupon.fields.partner') }}
                             </th>
                             <th>
+                                {{ trans('cruds.coupon.fields.type') }}
+                            </th>
+                            <th>
                                 &nbsp;
                             </th>
                         </tr>
@@ -61,6 +64,9 @@
                                 </td>
                                 <td>
                                     {{ $coupon->partner->name ?? '' }}
+                                </td>
+                                <td>
+                                    {{ App\Models\Coupon::TYPE_SELECT[$coupon->type] ?? '' }}
                                 </td>
                                 <td>
                                     @can('coupon_show')
@@ -138,9 +144,6 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  $('div#sidebar').on('transitionend', function(e) {
-    $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-  })
   
 })
 

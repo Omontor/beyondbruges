@@ -2,16 +2,16 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Coupon;
+use App\Models\CouponRedeem;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
 
-class MassDestroyCouponRequest extends FormRequest
+class MassDestroyCouponRedeemRequest extends FormRequest
 {
     public function authorize()
     {
-        abort_if(Gate::denies('coupon_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('coupon_redeem_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
     }
@@ -20,7 +20,7 @@ class MassDestroyCouponRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:coupons,id',
+            'ids.*' => 'exists:coupon_redeems,id',
         ];
     }
 }

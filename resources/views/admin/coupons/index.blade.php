@@ -38,6 +38,9 @@
                             {{ trans('cruds.coupon.fields.partner') }}
                         </th>
                         <th>
+                            {{ trans('cruds.coupon.fields.type') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -65,6 +68,14 @@
                             </select>
                         </td>
                         <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\Coupon::TYPE_SELECT as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -88,6 +99,9 @@
                             </td>
                             <td>
                                 {{ $coupon->partner->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Coupon::TYPE_SELECT[$coupon->type] ?? '' }}
                             </td>
                             <td>
                                 @can('coupon_show')
@@ -168,9 +182,6 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  $('div#sidebar').on('transitionend', function(e) {
-    $($.fn.dataTable.tables(true)).DataTable().columns.adjust();
-  })
   
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {

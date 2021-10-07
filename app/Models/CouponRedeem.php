@@ -3,23 +3,16 @@
 namespace App\Models;
 
 use \DateTimeInterface;
-use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Coupon extends Model
+class CouponRedeem extends Model
 {
     use SoftDeletes;
-    use Auditable;
     use HasFactory;
 
-    public const TYPE_SELECT = [
-        '0' => 'One Use',
-        '1' => 'Unlimited',
-    ];
-
-    public $table = 'coupons';
+    public $table = 'coupon_redeems';
 
     protected $dates = [
         'created_at',
@@ -28,19 +21,21 @@ class Coupon extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'amount',
-        'description',
-        'partner_id',
-        'type',
+        'user_id',
+        'coupon_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function partner()
+    public function user()
     {
-        return $this->belongsTo(Partner::class, 'partner_id');
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class, 'coupon_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

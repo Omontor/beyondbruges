@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Purchase;
+use App\Models\CouponRedeem;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -115,6 +116,14 @@ class PassportAuthController extends Controller
         $purchase->platform = $request->platform;
         $purchase->save();
         return $user;
+
+    }
+
+    public function usercoupons(Request $request) {
+
+        $user = User::find($request->id);
+        $coupons = CouponRedeem::where('user_id', $user->id)->get();
+        return $coupons;
 
     }
 
