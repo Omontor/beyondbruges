@@ -7,6 +7,7 @@ Route::post('login', [\App\Http\Controllers\PassportAuthController::class, 'logi
 Route::get('partners', 'Api\V1\Admin\PartnerApiController@list');
 Route::get('landmarks', 'Api\V1\Admin\LandmarkApiController@list');
 Route::post('usercoupons', [\App\Http\Controllers\PassportAuthController::class, 'usercoupons']);
+Route::get('coupons', [\App\Http\Controllers\PassportAuthController::class, 'list']);
 
 Route::middleware('auth:api')->post('purchase', [\App\Http\Controllers\PassportAuthController::class, 'makepurchase']);
 

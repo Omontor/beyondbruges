@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Purchase;
 use App\Models\CouponRedeem;
+use App\Models\Coupon;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -123,8 +124,14 @@ class PassportAuthController extends Controller
 
         $user = User::find($request->id);
         $coupons = CouponRedeem::where('user_id', $user->id)->get();
-        return $coupons;
+        return response()->json(['data' => $coupons], 200);
 
+    }
+
+        public function list () {
+
+        $coupons = Coupon::all();
+        return response()->json(['data' => $coupons], 200);
     }
 
 }
